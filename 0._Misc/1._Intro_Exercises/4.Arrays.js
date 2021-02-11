@@ -55,9 +55,8 @@ console.log("Original is: " + diet);
 
 // You really like your daily diet from last exercise. Copy it to a new array called dinnerTray so you can give it to a friend.  
 
-const dietCopy = diet.copyWithin();
+const dietCopy = diet.slice();
 console.log("Copy is: " + dietCopy);
-
 // --------------------------------------
 // Exercise 7 - For loop
 
