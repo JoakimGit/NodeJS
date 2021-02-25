@@ -31,17 +31,18 @@ app.get("/users/:id", (req, res) => {
 
 // Lesson 3
 app.get("/welcome", (req, res) => {
-    res.send("<p1>Welcome</p1>")
+    res.send("<p1>Welcome</p1>");
 });
 
 app.get("/me", (req, res) => {
-    let Joakim = {"name": "Joakim Olsen",
-    "age": 27,
-    "occupation": "student",
-    "status": "Very Hungry"};
-    
+    let Joakim = {
+        "name": "Joakim Olsen",
+        "age": 27,
+        "occupation": "student",
+        "status": "Very Hungry"
+    };
     res.send(Joakim);
-})
+});
 
 app.listen(8080);
-console.log("Listening...")
+console.log("Listening...");
