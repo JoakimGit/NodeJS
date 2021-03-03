@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json());
+
 //Lesson 2
 app.get("/", (req, res) => {
     res.send({"message": "Welcome"});
@@ -27,6 +29,30 @@ app.get("/users/:id", (req, res) => {
     }
 
     res.send(user);
+});
+
+// Lesson 4
+app.post("/users", (req, res) => {
+    const user = req.body;
+    console.log(user);
+    users.push(user);
+    res.send({ user: user });
+});
+
+app.patch("/users/:id", (req, res) => {
+    const id = req.params.id;
+    const user = req.body;
+    console.log(user);
+    const index = users.map(user => user.id).indexOf(Number(id));
+    if (index !== -1) users[index] = user;
+    res.send({ user: user });
+});
+
+app.delete("/users/:id", (req, res) => {
+    const id = req.params.id;
+    const index = users.map(user => user.id).indexOf(Number(id));
+    if (index !== -1) users.splice(index, 1);
+    res.send({ message : "User to be deleted is ID = " + id });
 });
 
 // Lesson 3
