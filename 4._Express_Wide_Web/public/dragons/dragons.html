@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .game-board {
+        display: grid;
+        grid-template-rows: 200px 200px 200px;
+        grid-template-columns: 200px 200px 200px;
+    }
+
+    .box {
+        background: #444;
+        border: 1px solid #555;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #AAA;
+    }   
+
+    #dragon-img {
+        width: 200px;
+        height: 200px;
+    }
+    </style>
+    <title>Dragon cave</title>
+</head>
+<body>
+    <h1>This is where the dragons are kept</h1>
+    <img src="https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/dragon-img_ver_1.jpg" alt="Dragon">
+    <span>This is scary, take me <a href="/">back</a></span>
+    
+    <p class ="puff">Puff was here</p>
+
+    <div class="game-board">
+        <div id="cell1" class="box"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+        <div class="box"><img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon"></div>
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+
+    // $("body").css("background-color", "red");
+
+    const dragonImage = '<img id="dragon-img" src="https://cdn.pixabay.com/photo/2014/01/05/01/19/dragon-238931_1280.jpg" alt="dragon">'
+    $("#cell1").html(dragonImage);
+
+    $("body").click(function() {
+        $("#cell1").empty();
+    })    
+
+        setTimeout(() => {
+            
+            // window.location = "/"
+        }, 5000)
+    </script>
+</body>
+</html>
