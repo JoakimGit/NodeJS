@@ -19,15 +19,8 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/users/:id", (req, res) => {
-    const id = req.params.id;
-    let user = null;
-
-    for (i = 0; i < users.length; i++) {
-        if (users[i].id == id) {
-            user = users[i];
-        }
-    }
-
+    const id = Number(req.params.id);
+    let user = users.find(user => user.id === id)
     res.send(user);
 });
 

@@ -34,24 +34,16 @@ app.patch("/plants/:id", (req, res) => {
     const id = Number(req.params.id);
     carniPlants = carniPlants.map(plant => {
         if (plant.id === id) {
-            return { ...plant, ...req.body };
+            return { ...plant, ...req.body, id: plant.id };
         }
         return plant;
     })
     res.send({ });
-
-    /* const id = Number(req.params.id);
-    const plant = req.body;
-    const index = carniPlants.map(plant => plant.id).indexOf(id);
-    carniPlants[index] = plant;
-    res.send({ "data": plant }); */
 });
 
 app.delete("/plants/:id", (req, res) => {
     const id = Number(req.params.id);
-    const index = carniPlants.map(plant => plant.id).indexOf(id);
-    if (index !== -1) carniPlants.splice(index, 1);
-    // plants = carniPlants.filter(plant => plant.id !== id);
+    carniPlants = carniPlants.filter(plant => plant.id !== id);
     res.send({ "message": "Plant to be deleted is ID = " + id });
 });
 

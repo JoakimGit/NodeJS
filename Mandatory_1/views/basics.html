@@ -14,16 +14,119 @@
           <a class="navbar-brand" href="/">KEA-Doc</a>          
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" href="/basics">Basics</a>
+              <a class="nav-link active" href="/basics">JS Basics</a>
               <a class="nav-link active" href="/restapi">CRUD API</a>
-              <a class="nav-link active" href="/html-and-static">HTML & Static content</a>
+              <a class="nav-link active" href="/html-and-static">Server, HTML & Static</a>
               <a class="nav-link active" href="/tools-and-commands">Tools & Commands</a>
             </div>
           </div>
         </div>
     </nav>
-
-
     
+    <div class="container">
+      <br>
+      <h2>Javascript Basics</h2>
+      <br>
+      <p>You can save values into variables by using <code>var</code>, <code>let</code>, or <code>const</code>.</p>
+      <p><code>Var</code> is the old way, and it didn't have scope restriction. <code>Let</code> has block scope. <code>Const</code> is similar, but also can't be reassigned.</p>
+    <pre><code class="language-javascript">const firstName = "Joakim";
+let lastName = "Olsen";</code></pre>
+      <p>Just like in math, variables can be used in expressions using operators like <code>+ - * / < ></code></p>
+      <p>In JavaScript, the <code>=</code> operator is used for assignment, not to check for equality. For equaility <code>==</code> and <code>===</code> are used.</p>
+      <pre><code class="language-javascript">const x = 5; // assigns the value 5 to x
+x == "5";  // true because it only compares value, and not type (string vs number)
+x === "5"; // false because it also compares type</code></pre>
+      <p>Printing to console is done with <code>console.log()</code>.</p>
+      <p>Click on a button below to learn more about that topic in Javascript.</p>
+
+      <button type="button" class="btn btn-outline-success" value="strings">Strings</button>
+      <button type="button" class="btn btn-outline-success" value="numbers">Numbers</button>
+      <button type="button" class="btn btn-outline-success" value="arrays">Arrays</button>
+      <button type="button" class="btn btn-outline-success" value="objects">Objects</button>
+      <button type="button" class="btn btn-outline-success" value="functions">Functions</button>
+      <br><br>
+
+      <div class="hideable" id="strings" style="display:none" >
+      <h4>Strings</h4>
+      <p>There are various ways to convert a string representation of a number into a real number.</p>
+      <p>These include <code>parseInt()</code>, <code>Number()</code> and the unary plus (<code>+number</code>).</p>
+      <p>The characters in a string can be accessed through bracket notation like <code>string[3]</code> which accesses the 4th letter in the string</p>
+      <p>There are many string methods available, such as <code>indexOf()</code>, <code>search()</code>, <code>slice()</code>, and <code>replace()</code>.</p>
+      </div>
+
+      <div class="hideable" id="numbers" style="display:none">
+      <h4>Numbers</h4>
+      <p>Javascript has only one type of number, so there's no specific float or int type. Numbers can be with or without decimals.</p>
+      <p>Adding two numbers with the <code>+</code> operator results in a number. Adding two strings, or a number and a string, results in string concatenation.</p>
+      <pre><code class="language-javascript">let x = 10 + 20; // 30
+let y = 10 + "20"; // 1020</code></pre>
+      <p>Number methods include <code>toString()</code>, <code>toFixed()</code>, <code>valueOf()</code>, and <code>Number.isInteger()</code>.</p>
+      </div>
+
+      <div class="hideable" id="arrays" style="display:none">
+      <h4>Arrays</h4>
+      <p>Javascript arrays can store multiple values in a single variable. The values can be of different types (numbers, strings, objects, functions).</p>
+      <p>You create an array by using square brackets.</p>
+      <p>Accessing an element in an array is done through bracket notation and the index number.</p>
+      <p>You can change the element of an array by assigning a value to an accessed element.</p>
+      <pre><code class="language-javascript">let fruits = ["apple", "banana", "kiwi", 3];
+let myFruit = fruits[1];  // banana
+fruits[0] = "pear";       // ["pear", "banana", "kiwi", 3]</code></pre>
+      <p>There are several ways to loop through an array in JavaScript. There's the <code>for</code> loop like in java, the <code>forEach</code> loop which takes a callback function that is called on every element.</p>
+      <p>The better way is to use the more specialised functional looping methods when applicable, namely <code>map</code>, <code>filter</code>, and <code>reduce</code>.</p>
+      <pre><code class="language-javascript">const nums = [1, 3, 5, 7, 9];
+
+for (let i = 0; i < nums.length; i++) { // using regular for loop
+console.log(nums[i]);
+}
+
+nums.map(x = => console.log(x)) // using map</code></pre>
+      <p>Example array methods: <code>length</code>, <code>join()</code>, <code>pop()</code>, and <code>push()</code>.</p>      
+      </div>
+
+      <div class="hideable" id="objects" style="display:none">
+      <h4>Objects</h4>
+      <p>Javascript objects look like json objects, consisting of key:value pairs, called properties. Objects are denoted by curly braces.</p>
+      <p>You access a properpy through either bracket notation using named index, or by dot notation.</p>
+      <pre><code class="language-javascript">let person = {
+  name: "Joakim",
+  age: 27,
+  occupation: "student",
+  nameAndAge: function() {
+    return this.name + " " + this.age
+  }
+}; 
+let myAge = person.age      // 27
+let myName = person["name"] // Joakim</code></pre>
+      <p>Objects can also have methods stored as properties, and they can be accessed with dot notation and parentheses. </p>
+      <pre><code class="language-javascript">person.nameAndAge() // Joakim 27</code></pre>
+      <p>You can add a property by saying <code>object.propery_name = value</code>. You can remove a property by doing <code>delete object.property_name</code>.</p>
+      <pre><code class="language-javascript">let car = {brand: "Fiat"}; // { brand: 'Fiat' }
+car.weight = 800; // { brand: 'Fiat', weight: 800 }
+delete car.brand; // { weight: 800 }
+      </code></pre>    
+      </div>
+      
+      <div class="hideable" id="functions" style="display:none">
+      <h4>Functions</h4>
+      <p>A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().</p>
+      <p>The code to be executed, by the function, is placed inside curly brackets: {}</p>
+      <p>The parentheses may include parameter names separated by commas.</p>
+      <p>Inside the function, the arguments (the parameters) behave as local variables.</p>
+      <pre><code class="language-javascript">function myFunction(p1, p2) {
+  return p1 * p2;   // The function returns the product of p1 and p2
+}</code></pre> 
+      <p>Functions can also be put into variables. You can also omit the name, and even the function keyword if you want.</p>
+      <pre><code class="language-javascript">const myArrowFunction = () => {
+  return "Hello there from the arrow function";
+}
+myArrowFunction() // 'Hello there from the arrow function'</code></pre> 
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="/scripts/basics.js"></script>
 </body>
 </html>

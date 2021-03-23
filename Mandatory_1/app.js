@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/index.html");
 });
@@ -20,7 +22,6 @@ app.get("/html-and-static", (req, res) => {
 app.get("/tools-and-commands", (req, res) => {
     res.sendFile(__dirname + "/views/tools-commands.html");
 });
-
 
 const PORT = process.env.PORT || 8080;
 

@@ -6,7 +6,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"/>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -14,9 +13,9 @@
           <a class="navbar-brand" href="/">KEA-Doc</a>          
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" href="/basics">Basics</a>
+              <a class="nav-link active" href="/basics">JS Basics</a>
               <a class="nav-link active" href="/restapi">CRUD API</a>
-              <a class="nav-link active" href="/html-and-static">HTML & Static content</a>
+              <a class="nav-link active" href="/html-and-static">Server, HTML & Static</a>
               <a class="nav-link active" href="/tools-and-commands">Tools & Commands</a>
             </div>
           </div>
@@ -25,16 +24,20 @@
 
     <div class="container">
       <br>
-      <h3>These are the tools we've used:</h3><br>
-      <p>Nodemon</p>
-      <p>Express</p>
+      <h3>The tools we've used:</h3><br>
+      <h4>Nodemon</h4>
+      <p>Nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.</p>
+      <h4>Express</h4>
       <p>A web development framework for NodeJS that provides a robust set of features to develop web and mobile applications.</p>
       <p>Core features include routing and dynamic rendering of HTML pages. </p>
-      <p>JQuery</p>
-
+      <h4>JQuery</h4>
+      <p>jQuery is a JavaScript library that makes things like HTML document traversal and manipulation much simpler with an easy-to-use API that works across a multitude of browsers.</p>
+      <h4>Cross-env</h4>
+      <p>Most Windows command prompts will choke when you set environment variables with NODE_ENV=production like that.</p>
+      <p>cross-env makes it so you can have a single command without worrying about setting or using the environment variable properly for the platform.</p>
       <br><hr><br>
       
-      <h3>These are the commands we're using:</h3><br>
+      <h3>The commands we're using:</h3><br>
       
       <code><p>npm install express</p></code>
       <p>Installs the express framework.</p>
@@ -43,20 +46,19 @@
       <p>Installs nodemon globally.</p>
 
       <code><p>node app.js</p></code>
-      <p>Runs a node app/script.</p>
+      <p>Runs a node app.</p>
 
       <code><p>nodemon app.js</p></code>
-      <p>Runs the node app/script with nodemon, which restarts the application upon code changes.</p>
+      <p>Runs the node app with nodemon.</p>
       
       <code><p>npm run start-dev</p></code>
       <p>Run custom scripts defined in package.json.</p>
 
-      <code><p>"scripts": { <br>
-        "start-dev": "cross-env PORT=3000 nodemon app.js" <br>
-      },</p></code>
+      <pre><code style="color: #d63384;">"scripts": { 
+  "start-dev": "cross-env PORT=3000 nodemon app.js"
+},    </code></pre>
       <p>Example script. Uses nodemon to start the app on a specific port.</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
 </body>
 </html>

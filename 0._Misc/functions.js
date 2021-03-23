@@ -7,7 +7,7 @@ const myVariableFunction = function() {
 };
 
 const myArrowFunction = () => {
-    return "Hell there from the arrow function";
+    return "Hello there from the arrow function";
 }
 
 function hiNow() {

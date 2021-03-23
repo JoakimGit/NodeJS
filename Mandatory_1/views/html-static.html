@@ -14,15 +14,39 @@
           <a class="navbar-brand" href="/">KEA-Doc</a>          
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" href="/basics">Basics</a>
+              <a class="nav-link active" href="/basics">JS Basics</a>
               <a class="nav-link active" href="/restapi">CRUD API</a>
-              <a class="nav-link active" href="/html-and-static">HTML & Static content</a>
+              <a class="nav-link active" href="/html-and-static">Server, HTML & Static</a>
               <a class="nav-link active" href="/tools-and-commands">Tools & Commands</a>
             </div>
           </div>
         </div>
     </nav>
+
+    <div class="container">
+      <br>
+      <h3>Starting the server</h3>
+      <p>In order to start a server for a web app, we use the express framework. First we include the express module by using <code>require()</code>.</p>
+      <p>The <code>express()</code> function from the express module then creates the application for us. Once that's done, <code>app.listen(port)</code> listens for a connection on a port.</p>
+      <pre><code class="language-javascript">const express = require("express");
+const app = express();
+app.listen(8080);</code></pre>
+      
+      <br>
+      <h3>Serving HTML</h3>
+      <p>Once the server is up, you can add routes and methods, so that you can go to different endpoints on the server.</p>
+      <p>An http method is used, together with an endpoint url and request+response objects. Serving an HTML page means including the page in the response.</p>
+      <pre><code class="language-javascript">app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
+});</code></pre>
+
+      <br>
+      <h3>Serving Static content</h3>
+      <p>To make use of static content like images, stylesheets, and scripts, you need to tell express where to find them.</p>
+      <p>You do this with the <code>.static(folderName)</code> function in express.</p>
+      <pre><code class="language-javascript">app.use(express.static('public'));</code></pre>
+    </div>
     
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
 </body>
 </html>

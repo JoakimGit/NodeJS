@@ -30,7 +30,7 @@ const three = 98;
 // Show in the console the avg. with 5 decimals
 const thirdSum = one + two + three;
 const avrg = thirdSum/3;
-console.log(avrg.toFixed(5));
+console.log(avrg.toFixed(5)); 
 
 
 

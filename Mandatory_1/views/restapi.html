@@ -14,14 +14,137 @@
           <a class="navbar-brand" href="/">KEA-Doc</a>          
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" href="/basics">Basics</a>
+              <a class="nav-link active" href="/basics">JS Basics</a>
               <a class="nav-link active" href="/restapi">CRUD API</a>
-              <a class="nav-link active" href="/html-and-static">HTML & Static content</a>
+              <a class="nav-link active" href="/html-and-static">Server, HTML & Static</a>
               <a class="nav-link active" href="/tools-and-commands">Tools & Commands</a>
             </div>
           </div>
         </div>
     </nav>
+
+    <div class="container">
+      <br>
+      <h3>Example of REST CRUD API with an app that maintains users</h3>
+
+
+      <br>
+      <h5>REST API Design</h5>
+      <button id="toggleDesign" type="button" class="btn btn-outline-secondary">Show</button>
     
+      <div id="design" style="display: none;">
+      <pre>
+----------------------------------------------------------------------|
+| HTTP Method  | Endpoint                       | Endpoint            |
+|              | /users                         | /users/id           |
+----------------------------------------------------------------------|
+| GET          | Get a single user              | Get all users by id |                   
+----------------------------------------------------------------------|
+| POST         | Create a user                  |                     |
+----------------------------------------------------------------------|
+| PUT / PATCH  | Update a list of users         | Update a user by id |
+----------------------------------------------------------------------|
+| DELETE       | Delete all users<b>*</b>              | Delete a user by id |
+----------------------------------------------------------------------|
+      </pre>
+      <p><b>* Not to be implemented</b></p>
+      </div>
+
+      <br><br>
+      <h5>Starting setup</h5>
+      <button id="toggleStart" type="button" class="btn btn-outline-secondary">Show</button>
+      <div id="startingPoint" style="display: none;">
+        <pre><code class="language-javascript">const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+let id = 5;
+
+const users = [];
+users.push({id: 1, name: "Anders", age: 31, likes: "cats"});
+users.push({id: 2, name: "Thomas", age: 24, likes: "dogs"});
+users.push({id: 3, name: "Alex", age: 22, likes: "games"});
+users.push({id: 4, name: "Jacob", age: 27, likes: "prasing the sun"});
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, (err) => {
+    if (err) {
+        console.log(err);
+    }
+    console.log("Listening to server at port", Number(PORT));
+});    </code></pre>
+      
+      </div>
+      <br><br>
+      <h5>Click the buttons below to see how to do the different HTTP methods in express.</h5>
+      <button type="button" class="btn btn-outline-success" value="get">Get</button>
+      <button type="button" class="btn btn-outline-success" value="post">Post</button>
+      <button type="button" class="btn btn-outline-success" value="patch">Patch</button>
+      <button type="button" class="btn btn-outline-success" value="delete">Delete</button>
+
+
+      <div class="hideable" id="get" style="display: none;">
+        <pre><code class="language-javascript">app.get("/users", (req, res) => {
+  res.send({ "data": users });
+});
+
+app.get("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+  let user = users.find(user => user.id === id)
+  res.send({ "data": user });
+});     </code></pre>
+        <p>In the first routing, you simply send the array of users.</p>
+        <p>In the second routing, we get the id as a path variable. Then we use the find method to iterate through the array.</p>
+        <p>Another way of getting the id would be as a query parameter. With the url <code>localhost:8080/users?id=4</code>, it would look like this:</p>
+        <pre><code class="language-javascript">app.get("/users", (req, res) => {
+  const id = Number(req.query.id);
+});     </code></pre>
+      </div>
+
+      <div class="hideable" id="post" style="display: none;">
+        <pre><code class="language-javascript">app.post("/users", (req, res) => {
+  const user = req.body;
+  user.id = id++;
+  users.push(user);
+  res.send({ "data": user });
+});     </code></pre>
+        <p>In the post method, we can get the json object from the request body.</p>
+        <p>After setting the id with the global variable as seen in the starting setup, the user object is pushed to the array serving as a database, and sent back to the client.</p>
+        <p>In the starting setup we also see the line <code>app.use express.json());</code> which is required in order to parse the json.</p>
+      </div>
+
+      <div class="hideable" id="patch" style="display: none;">
+        <pre><code class="language-javascript">app.patch("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+  users = users.map(user => {
+    if (user.id === id) {
+        return { ...user, ...req.body, id: user.id };
+    }
+    return user;
+  })
+  res.send({ });          
+});     </code></pre>
+        <p>We get the id from the path and create a new array through the map method, which is assigned in place of the old array.</p>
+        <p>Every user except the one with the matching id is simply retained in the array as is, but the one that matches gets patched.</p>
+        <p>This happens through the use of the spread operator <code>...</code> which unpacks the content of the initial user object and the received user object,</p>
+        <p>before combining them and overriding the id, just in case the client included a wrong id in the json object.</p>
+      </div>
+
+      <div class="hideable" id="delete" style="display: none;">
+        <pre><code class="language-javascript">app.delete("/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+  users = users.filter(user => user.id !== id);
+  res.send({ "message": "User to be deleted is ID = " + id });
+});     </code></pre>
+        <p>For the delete routing, we get the id like in several of the other methods, and then remove that user by filtering it out of the array.</p>
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="/scripts/restapi.js"></script>
 </body>
 </html>
