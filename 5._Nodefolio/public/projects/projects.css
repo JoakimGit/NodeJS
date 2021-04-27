@@ -1,0 +1,10 @@
+#projects {    
+    height: 625px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.project {
+    height: 200px;
+    max-width: 50%;
+}

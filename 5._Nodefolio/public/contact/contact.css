@@ -1,0 +1,15 @@
+.contact-grid {
+    display: flex;
+}
+
+#contact-form {
+    flex: 2;
+}
+
+#contact-info {    
+    flex: 1;
+}
+
+#contact-form .form-control {
+    border-color: brown;
+}

@@ -1,4 +1,7 @@
+const { text } = require("express");
 const express = require("express");
+const fetch = require('node-fetch');
+
 const app = express();
 
 app.use(express.static('public'));
@@ -11,6 +14,16 @@ app.get("/dragons", (req, res) => {
     res.sendFile(__dirname + "/public/dragons/dragons.html");
 });
 
+app.get("/crypto", (req, res) => {
+    res.sendFile(__dirname + "/public/crypto/crypto.html");
+});
+
+app.get("/proxy", (req, res) => {
+    fetch("https://google.com")
+    .then(response => response.textConverted())
+    .then(text => res.send(text));
+});
+
 app.get("/potato", (req, res) => {
     if (req.query.value === "spud") {
         return res.send({ type: "petite potato" });
@@ -20,9 +33,9 @@ app.get("/potato", (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, (err) => {
+const server = app.listen(PORT, (err) => {
     if (err) {
         console.log(err);
     }
-    console.log("Listening to server at port", Number(PORT));
+    console.log("Listening to server at port", server.address().port);
 });

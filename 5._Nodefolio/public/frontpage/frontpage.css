@@ -1,0 +1,26 @@
+body {
+    background-image: url('blue-bg-3.png');    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#title {
+    text-align: center;
+}
+
+#frontpage {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+}
+
+.column p {
+    font-family: sans-serif;
+}
+
+.column img {
+    border-radius: 10px;
+}

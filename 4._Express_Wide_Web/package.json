@@ -3,7 +3,10 @@
         "start-dev": "cross-env PORT=3000 nodemon app.js"
     },
     "dependencies": {
-        "express": "^4.17.1"
+        "encoding": "^0.1.13",
+        "express": "^4.17.1",
+        "iconv-lite": "^0.6.2",
+        "node-fetch": "^2.6.1"
     },
     "devDependencies": {
         "cross-env": "^7.0.3"

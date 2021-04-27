@@ -1,0 +1,8 @@
+#main-content {
+    min-height: calc(100vh - 125px);
+}
+
+.navbar .navbar-nav li:hover {
+    background-color: silver;
+    border-radius: 5px;
+}

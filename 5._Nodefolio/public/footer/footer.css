@@ -1,0 +1,9 @@
+#footer {
+    /* height: 10px; */
+    /* display: flex;
+    flex-flow: column wrap;
+    align-items: center; */
+    height: 10px;
+    display: flex;
+    justify-content: center;
+} 

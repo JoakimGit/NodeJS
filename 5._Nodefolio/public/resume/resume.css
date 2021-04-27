@@ -1,0 +1,20 @@
+#education {
+    grid-column: 1;
+}
+
+#skills {
+    grid-column: 2;
+}
+
+#person {
+    grid-column: 3;
+}
+
+#about h3 {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    justify-content: space-around;
+}

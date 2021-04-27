@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Real time crypto prices</h1>
+
+    <div>
+        <h3>Bitcoin</h3>
+        <p id="bitcoin-price"></p>
+    </div>
+
+    <div>
+        <h3>Ethereum</h3>
+        <p id="ethereum-price"></p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        /* $.get("https://api.coinlore.net/api/ticker/?id=90", (data) => {
+            document.getElementById("bitcoin-price").innerText = "$" + data[0].price_usd;
+            console.log(data);
+        });
+        $.get("https://api.coinlore.net/api/ticker/?id=80", (data) => {
+            document.getElementById("ethereum-price").innerText = "$" + data[0].price_usd;
+            console.log(data);
+        }); */
+
+        fetch("https://api.coinlore.net/api/ticker/?id=90")
+        .then(message => message.json())
+        .then(data => document.getElementById("bitcoin-price").innerText = "$" + data[0].price_usd);
+
+        /* fetch("https://api.coinlore.net/api/ticker/?id=80")
+        .then(message => message.json())
+        .then(data => document.getElementById("ethereum-price").innerText = "$" + data[0].price_usd); */
+
+        (async function() {
+            const res = await fetch("https://api.coinlore.net/api/ticker/?id=80")
+            const data = await res.json();
+            document.getElementById("ethereum-price").innerText = "$" + data[0].price_usd;
+        })();
+
+    </script>
+</body>
+</html>
