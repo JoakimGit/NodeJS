@@ -1,0 +1,7 @@
+div #confirmation {
+    display: grid;
+    place-content: center;
+    background-color: rgb(63, 252, 63);
+    border-radius: 5px;
+    padding: 20px;
+}
