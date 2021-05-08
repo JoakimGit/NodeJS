@@ -5,15 +5,17 @@ const server = require("http").createServer(app);
 
 const io = require("socket.io")(server);
 
+const escapeHtml = require("html-escaper").escape;
+
 io.on("connection", (socket) => {
     socket.on("colorSelected", (data) => {
         // Updates all
-        io.emit("changeColor", data);
+        io.emit("changeColor", { color: escapeHtml(data.color) });
         // Updates all except self
         //socket.broadcast.emit("changeColor", data);
         // Updates self
         //socket.emit("changeColor", data);
-    })
+    });
     console.log("A socket connection", socket.id);
 });
 

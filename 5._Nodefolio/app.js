@@ -6,6 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static("public"));
+app.use("/jquery", express.static(__dirname + "/node_modules/jquery-datetimepicker"));
 
 const projectsRouter = require("./routes/projects");
 const contactRouter = require("./routes/contact");
