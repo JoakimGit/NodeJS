@@ -31,7 +31,7 @@ const projects = [
     },
     {
         title: "Maze runner",
-        description: "A simple program for helping a bug through a maze",
+        description: "Given a maze of a specific format, this program helps a bug find its way from the entrance to the exit.",
         gitURL: "https://github.com/JoakimGit/MazeRunner",
         images: [],
         technologiesInvolved: ["Java"]

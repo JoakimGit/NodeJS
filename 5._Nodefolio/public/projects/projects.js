@@ -20,7 +20,7 @@
 
         const projectURL = document.createElement("p");
         projectURL.classList.add("project-url");
-        projectURL.innerText = project.gitURL;
+        projectURL.innerHTML = '<a href="' + project.gitURL +'">' + 'Github link' +'</a>';
 
         const projectTechs = document.createElement("p");
         projectTechs.classList.add("project-technologies");
@@ -28,8 +28,8 @@
 
         projectDiv.appendChild(projectTitle);
         projectDiv.appendChild(projectDescription);
-        projectDiv.appendChild(projectURL);
         projectDiv.appendChild(projectTechs);
+        projectDiv.appendChild(projectURL);
         projectsDiv.appendChild(projectDiv);
 
     });

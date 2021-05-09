@@ -16,7 +16,7 @@ $(document).ready(function(){
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December']
 
-    $('#submit').click(function(){
+    $('#submit').on("click", function(){
         const date = $('#date').datetimepicker("getValue");
         const dateFormatted = `You have scheduled a meeting ${days[date.getDay()]} ${months[date.getMonth()]}
             ${date.getDate()} ${date.getFullYear()} at ${date.getHours()}:00`;
